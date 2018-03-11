@@ -1,17 +1,18 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var bodyParser = require('body-parser');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+const http = require('http');
 
-var book = require('./api/routes/book');
-var doingsRoutes = require('./api/routes/doings');
-var targetsRoutes = require('./api/routes/targets');
-var topsRoutes = require('./api/routes/tops');
-var usersRoutes = require('./api/routes/users');
-var app = express();
+const book = require('./api/routes/book');
+const doingsRoutes = require('./api/routes/doings');
+const targetsRoutes = require('./api/routes/targets');
+const topsRoutes = require('./api/routes/tops');
+const usersRoutes = require('./api/routes/users');
+const app = express();
 
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 mongoose.connect(
   'mongodb://nodejs-rest:' +
@@ -25,7 +26,7 @@ mongoose.connect(
 // secret-jwt-key
 // mongoose.Promise = global.Promise;
 
-app.use(logger('dev'));
+app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended':'false'}));
 app.use(express.static(path.join(__dirname, 'dist')));
@@ -43,7 +44,7 @@ app.use('/api/users', usersRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
@@ -60,5 +61,11 @@ app.use(function(err, req, res, next) {
 });
 
 app.set('view engine', 'html');
+
+const port = process.env.PORT || 3000;
+const server = http.createServer(app);
+
+server.listen(port);
+
 
 module.exports = app;
