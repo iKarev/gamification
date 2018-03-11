@@ -17,7 +17,6 @@
   </v-list-tile-content>
 </template>
 
-
 <script>
 export default {
   props: ['doing'],

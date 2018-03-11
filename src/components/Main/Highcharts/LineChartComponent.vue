@@ -1,5 +1,5 @@
 <template>
-	<div class="highcharts"></div>
+  <div class="highcharts"></div>
 </template>
 
 <script>

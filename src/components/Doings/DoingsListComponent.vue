@@ -39,7 +39,6 @@
   </div>
 </template>
 
-
 <script>
 import Chart from '../Main/Highcharts/ChartComponent.vue'
 import doingsEditing from './DoingsEditingComponent.vue'

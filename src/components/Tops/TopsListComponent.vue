@@ -50,7 +50,6 @@
   </div>
 </template>
 
-
 <script>
 import TopEdit from './TopEditComponent.vue'
 import TopRow from './TopRowComponent.vue'

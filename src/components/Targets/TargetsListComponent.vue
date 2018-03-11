@@ -34,7 +34,6 @@
   </div>
 </template>
 
-
 <script>
 import TargetsEditing from './TargetsEditingComponent.vue'
 import TargetsRow from './TargetsRowComponent.vue'

@@ -40,7 +40,7 @@ export default {
   },
   data () {
     return {
-      monthChanges: true
+      monthChanges: false
     }
   },
   created () {
@@ -49,7 +49,7 @@ export default {
   methods: {
     changeMonth (e) {
       if (this.monthChanges) return
-      this.monthChanges = true
+      // this.monthChanges = true
       const getMonth = (num) => {
         this.$store.dispatch('getCalendarMonth', {year: this.month.year, month: this.month.month + num})
       }
@@ -65,7 +65,7 @@ export default {
       return this.month.days.length > 35 ? '16.666%' : '20%'
     },
     month () {
-      this.monthChanges = false
+      // this.monthChanges = false
       return this.$store.getters.month
     }
   }

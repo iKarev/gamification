@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container v-if="!periodDoings.todo.length && !periodDoings.stop.length">
-      <p class="m_0">Вы не создали {{ doingPeriodNames[periodType - 1] }} дел? 
+      <p class="m_0">Вы не создали {{ doingPeriodNames[periodType - 1] }} дел?
         <router-link :to="'/DoingsManagement'">Пора это сделать!</router-link>
       </p>
     </v-container>
