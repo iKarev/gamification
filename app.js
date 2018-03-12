@@ -3,7 +3,6 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
-const http = require('http');
 
 const book = require('./api/routes/book');
 const doingsRoutes = require('./api/routes/doings');
@@ -61,11 +60,5 @@ app.use(function(err, req, res, next) {
 });
 
 app.set('view engine', 'html');
-
-const port = process.env.PORT || 3000;
-const server = http.createServer(app);
-
-server.listen(port);
-
 
 module.exports = app;
