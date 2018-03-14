@@ -61,4 +61,10 @@ app.use(function(err, req, res, next) {
 
 app.set('view engine', 'html');
 
+const port = process.env.PORT || 3000;
+console.log(port);
+app.listen(port, () => {
+  console.log(`App is running`);
+})
+
 module.exports = app;
