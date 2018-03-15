@@ -30,15 +30,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended':'false'}));
 app.use(express.static(path.join(__dirname, 'dist')));
 
-app.use('/books', express.static(path.join(__dirname, 'dist')));
+// app.use('/books', express.static(path.join(__dirname, 'dist')));
 app.use('/book', book);
-app.use('/api/doingss', express.static(path.join(__dirname, 'dist')));
+// app.use('/api/doingss', express.static(path.join(__dirname, 'dist')));
 app.use('/api/doings', doingsRoutes);
-app.use('/api/targetss', express.static(path.join(__dirname, 'dist')));
+// app.use('/api/targetss', express.static(path.join(__dirname, 'dist')));
 app.use('/api/targets', targetsRoutes);
-app.use('/api/topss', express.static(path.join(__dirname, 'dist')));
+// app.use('/api/topss', express.static(path.join(__dirname, 'dist')));
 app.use('/api/tops', topsRoutes);
-app.use('/api/userss', express.static(path.join(__dirname, 'dist')));
+// app.use('/api/userss', express.static(path.join(__dirname, 'dist')));
 app.use('/api/users', usersRoutes);
 
 // catch 404 and forward to error handler
@@ -46,6 +46,17 @@ app.use(function(req, res, next) {
   const err = new Error('Not Found');
   err.status = 404;
   next(err);
+});
+
+
+app.set("port", process.env.PORT || 3000);
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('dist'));
+}
+
+app.listen(app.get("port"), () => {
+  console.log(`Find the server at: http://localhost:${app.get("port")}/`); // eslint-disable-line no-console
 });
 
 // error handler
@@ -66,4 +77,8 @@ app.set('view engine', 'html');
 //   console.log(`App is running`);
 // })
 
-module.exports = app;
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static('dist'));
+// }
+
+// module.exports = app;
