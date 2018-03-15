@@ -28,7 +28,7 @@ mongoose.connect(
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended':'false'}));
-app.use(express.static(path.join(__dirname, 'dist')));
+// app.use(express.static(path.join(__dirname, 'dist')));
 
 // app.use('/books', express.static(path.join(__dirname, 'dist')));
 app.use('/book', book);
@@ -49,15 +49,15 @@ app.use(function(req, res, next) {
 });
 
 
-app.set("port", process.env.PORT || 3000);
+// app.set("port", process.env.PORT || 3000);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('dist'));
 }
 
-app.listen(app.get("port"), () => {
-  console.log(`Find the server at: http://localhost:${app.get("port")}/`); // eslint-disable-line no-console
-});
+// app.listen(app.get("port"), () => {
+//   console.log(`Find the server at: http://localhost:${app.get("port")}/`); // eslint-disable-line no-console
+// });
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -67,7 +67,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.sendFile('/Projects/gamification/gamification/dist/index.html');
+  res.sendFile('/dist/index.html');
 });
 
 app.set('view engine', 'html');
