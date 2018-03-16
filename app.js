@@ -49,7 +49,7 @@ app.use(function(req, res, next) {
 });
 
 
-app.set("port", process.env.PORT || 43537);
+app.set("port", process.env.PORT || 80);
 
 if (process.env.NODE_ENV === 'production') {
   console.log('dist')
