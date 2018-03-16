@@ -49,14 +49,15 @@ app.use(function(req, res, next) {
 });
 
 
-app.set("port", process.env.PORT || 80);
+app.set("port", process.env.PORT || 43537);
 
 if (process.env.NODE_ENV === 'production') {
+  console.log('dist')
   app.use(express.static('dist'));
 }
 
 app.listen(app.get("port"), () => {
-  console.log(`Find the server at: http://localhost:${app.get("port")}/`); // eslint-disable-line no-console
+  console.log(`Find the server at: ${app.get("port")}`); // eslint-disable-line no-console
 });
 
 // error handler
@@ -67,7 +68,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.sendFile('/dist/index.html');
+  res.sendFile(path.join(__dirname, '../dist', 'index.html'));
 });
 
 app.set('view engine', 'html');
