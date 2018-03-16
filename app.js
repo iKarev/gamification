@@ -57,7 +57,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.listen(app.get("port"), () => {
-  console.log(`Find the server at: ${app.get("port")}`); // eslint-disable-line no-console
+  console.log(`Find the server at: ${app.get("port")}`); 
 });
 
 // error handler
